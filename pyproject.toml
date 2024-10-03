@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "rag_system"
+version = "0.1.0"
+description = "نظام RAG للبحث الدلالي في المستندات"
+authors = ["اسمك هنا <بريدك@الإلكتروني.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12.5"  # أحدث إصدار مستقر من Python 3.11
+fastapi = "^0.115.0"  # أحدث إصدار مستقر من fastapi
+uvicorn = "^0.31.0"  # أحدث إصدار مستقر من uvicorn
+langchain = "^0.3.1"  # أحدث إصدار مستقر من langchain
+pydantic = "^2.9.2"  # أحدث إصدار مستقر من pydantic
+pydantic-settings = "^2.5.2"  # أحدث إصدار مستقر من pydantic-settings
+python-multipart = "^0.0.12"
+langchain-openai = "^0.2.1"  # أحدث إصدار مستقر من langchain-openai
+langchain-community = "^0.3.1"  # أحدث إصدار مستقر من langchain-community
+langchain-google-genai = "^2.0.0"  # أحدث إصدار مستقر من langchain-google-genai
+langchain-groq = "^0.2.0"  # أحدث إصدار مستقر من langchain-groq
+langchain-cohere = "^0.3.0"  # أحدث إصدار مستقر من langchain-cohere
+langchain-anthropic = "^0.2.1"  # أحدث إصدار مستقر من langchain-anthropic
+langchain-qdrant = "^0.1.4"  # أحدث إصدار مستقر من langchain-qdrant
+qdrant-client = "^1.11.3"  # أحدث إصدار مستقر من qdrant-client
+supabase = "^2.8.1"  # أحدث إصدار مستقر من supabase
+# langchain-pinecone = "^0.2.0"  # أحدث إصدار مستقر من langchain-pinecone
+pinecone = "^5.3.1"  # أحدث إصدار مستقر من supabase
+pinecone-client = "^5.0.1"  # أحدث إصدار مستقر من pinecone-client
+pymilvus = "^2.4.7"  # أحدث إصدار مستقر من pymilvus
+langchain-together = "^0.2.0"  # أحدث إصدار مستقر من langchain-together
+elasticsearch = "^8.15.1"  # أحدث إصدار مستقر من elasticsearch
+langchain-elasticsearch = "^0.3.0"  # أحدث إصدار مستقر من langchain-elasticsearch
+langchain-voyageai = "^0.1.2"  
+langchain-unstructured = "^0.1.5"  
+# unstructured = "^0.15.3"  # أحدث إصدار مستقر من unstructured
+python-multipart = "^0.0.12"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.3.3"  # أحدث إصدار مستقر من pytest
+black = "^24.5.1"  # أحدث إصدار مستقر من black
+isort = "^5.13.2"  # أحدث إصدار مستقر من isort
+mypy = "^1.9.0"  # أحدث إصدار مستقر من mypy
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.isort]
+profile = "black"
