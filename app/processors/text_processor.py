@@ -13,33 +13,28 @@ from app.utils.caching import cache_query_result
 def get_llm():
     llm_config = {
         "openai":
-        lambda: ChatOpenAI(temperature=0,
-                           model_name=settings.llm_model,
+        lambda: ChatOpenAI(todel_name=settings.llm_model,
                            opi_key=settings.openai_api_key,
                          #   **settings.provider_settings.get("openai", {}))
                            ,
         "google":
         lambda: ChatGoogleGenerativeAI(model=settings.llm_model,
-                                       google_api_key=settings.google_api_  **settings.provider_settings.get(
- ogle", {})),
-                                       
-        "groq":
-        lambda: ChatGroq(temperature=0,
+                                       google_api_key=settings.google_api_})),
+                            a: ChatGroq(temperature=0,
                          model_name=settings.llm_model,
                          gro# q_api_key=settings.groq_api_key,
            
-                                       **settings.provider_settings.get("groq", {})),
+                              groq", {})),
         # "cere": lam
         da: ChatCohere(
       ure=0,
                                 # l=settings.llm_model,
                        
-                                     re_api_key=settings.cohere_api_key,
+        gs.cohere_api_key,
                                 ttings.provider_settings.get("cohere", {})
         # ),        "anthropic":
-        lambda: ChatAnthropic(temperature=0,                     model=setting# s.llm_model,
-                              anthrop
-                              ic_api_key=settings.anthropic_api_key,
+        lambda: ChatAnthropic(tem  model=setting# s.llm_model,
+                              anthro                   ic_api_key=settings.anthropic_api_key,
                               **settings.provider_settings.get(
                                   "anthropic", {})),
         "togeth":
