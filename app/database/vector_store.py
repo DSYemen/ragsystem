@@ -4,7 +4,7 @@ from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 from langchain_community.vectorstores import SupabaseVectorStore, FAISS, Chroma, Pinecone as PineconeVectorStore
 from supabase.client import create_client
-from langchain_milvus import Milvus
+from langchain_milvus import Milvus,Zilliz
 from langchain_elasticsearch import ElasticsearchStore
 from app.config import settings
 from app.embeddings.embeddings import get_embedding_model
@@ -33,6 +33,10 @@ def get_vector_store():
                 embeddings,
                 table_name=settings.vector_db_table),
             "milvus":
+            lambda: Milvus(connection_args={'uri': settings.vector_db_host, 'api_key': settings.vector_db_api_key},
+                           collection_name=settings.vector_db_collection,
+                           embedding_function=embeddings),
+            "zilliz":
             lambda: Milvus(connection_args={'uri': settings.vector_db_host, 'api_key': settings.vector_db_api_key},
                            collection_name=settings.vector_db_collection,
                            embedding_function=embeddings),

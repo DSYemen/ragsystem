@@ -20,11 +20,13 @@ class Settings(BaseModel):
 
     # Vector DB Settings
     vector_db_provider: str = os.getenv('VECTOR_STORE_TYPE')
-    vector_db_api_key: str = os.getenv('QDRANT_API_KEY')
+    vector_db_api_key: str = os.getenv('ZILLIZ_MILVUS_API_KEY')
     vector_db_url: Optional[str] = os.getenv('QDRANT_URL')
-    vector_db_collection: Optional[str] = os.getenv('QDRANT_COLLECTION')
+    # vector_db_collection: Optional[str] = os.getenv('QDRANT_COLLECTION')
+    vector_db_collection: Optional[str] = os.getenv('ZILLIZ_MILVUS_COLLECTION')
     vector_db_index_name: Optional[str] = os.getenv('PINECONE_INDEX')
-    vector_db_host: Optional[str] = os.getenv('PINECONE_HOST')
+    # vector_db_host: Optional[str] = os.getenv('PINECONE_HOST')
+    vector_db_host: Optional[str] = os.getenv('ZILLIZ_MILVUS_HOST')
     vector_db_table: Optional[str] = os.getenv('SUPABASE_TABEL')
     vector_db_port: Optional[int] = int(os.getenv('VECTOR_DB_PORT', 6333))
     vector_db_persist_directory: Optional[str] = os.getenv(
