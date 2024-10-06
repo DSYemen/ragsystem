@@ -2,9 +2,9 @@
 from pinecone import Pinecone
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
-from langchain_community.vectorstores import SupabaseVectorStore, FAISS, Chroma, Pinecone as PineconeVectorStore, Milvus
+from langchain_community.vectorstores import SupabaseVectorStore, FAISS, Chroma, Pinecone as PineconeVectorStore
 from supabase.client import create_client
-# from langchain_milvus import Milvus
+from langchain_milvus import Milvus
 from langchain_elasticsearch import ElasticsearchStore
 from app.config import settings
 from app.embeddings.embeddings import get_embedding_model
@@ -17,25 +17,23 @@ def get_vector_store():
         vector_store_config = {
             "pinecone":
             lambda: PineconeVectorStore(
-                Pinecone(api_key=settings.vector_db_api_key).Index(
-                    settings.vector_db_index_name), embeddings.embed_query,
-                "text"),
+                Pinecone(api_key=settings.vector_db_api_key,
+                         host=settings.vector_db_host).Index(
+                             settings.vector_db_index_name), embeddings.
+                embed_query, "text"),
             "qdrant":
             lambda: QdrantVectorStore(
                 client=QdrantClient(url=settings.vector_db_url,
                                     api_key=settings.vector_db_api_key),
                 collection_name=settings.vector_db_collection,
-                embeddings=embeddings),
+                embedding=embeddings),
             "supabase":
             lambda: SupabaseVectorStore(create_client(
                 settings.vector_db_url, settings.vector_db_api_key),
-                                        embeddings,
-                                        table_name=settings.vector_db_table),
+                embeddings,
+                table_name=settings.vector_db_table),
             "milvus":
-            lambda: Milvus(connection_args={
-                "host": settings.vector_db_host,
-                "port": settings.vector_db_port
-            },
+            lambda: Milvus(connection_args={'uri': settings.vector_db_host, 'api_key': settings.vector_db_api_key},
                            collection_name=settings.vector_db_collection,
                            embedding_function=embeddings),
             "elasticsearch":
