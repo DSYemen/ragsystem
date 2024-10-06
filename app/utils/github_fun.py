@@ -49,7 +49,7 @@ def GithubFileLoader_folder(url, file_filter='.md'):
 def GithubFileLoader_singleFile(url):
     github = get_params_from_url(url)
     # استخراج اسم الملف من الجزء الأخير من الرابط
-    # file_name = github['file_path'].split('/')[
+    # file_name = github['file_path'].split('/')[-1]
     file_name = github['file_path']  # آخر جزء في المسار هو اسم الملف
     loader = GithubFileLoader(
         repo=github['repo_path'],
